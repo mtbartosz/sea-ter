@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/background.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/missile.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/saucer.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/UIFont.spritefont</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
