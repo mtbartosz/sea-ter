@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/missileExplode.wav</SourceFile>
+  <SourceTime>2020-11-05T10:56:50.4028826+00:00</SourceTime>
+  <DestFile>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/Content/missileExplode.xnb</DestFile>
+  <DestTime>2020-11-05T10:58:15.6415973+00:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2020-08-10T16:17:54+01:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2020-08-10T16:17:54+01:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

@@ -25,6 +25,13 @@
 /processorParam:TextureFormat=Color
 /build:background.png
 
+#begin bigfont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:bigfont.spritefont
+
 #begin missile.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -37,6 +44,24 @@
 /processorParam:TextureFormat=Color
 /build:missile.png
 
+#begin missileExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:missileExplode.wav
+
+#begin particle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:particle.png
+
 #begin saucer.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,6 +73,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:saucer.png
+
+#begin shipExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:shipExplode.wav
 
 #begin UIFont.spritefont
 /importer:FontDescriptionImporter

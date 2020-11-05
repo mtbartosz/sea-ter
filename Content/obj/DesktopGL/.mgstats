@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/background.png","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/background.xnb","TextureProcessor","Texture2DContent",445299,1440085,0,2153004
-"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/missile.png","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/missile.xnb","TextureProcessor","Texture2DContent",22084,32853,0,0053854
-"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/saucer.png","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/saucer.xnb","TextureProcessor","Texture2DContent",31236,32853,0,0042808
+"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bigfont.spritefont","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/bigfont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,267298,0,3894678
+"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/missileExplode.wav","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/missileExplode.xnb","SoundEffectProcessor","SoundEffectContent",34706,34665,1,5598968
+"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/shipExplode.wav","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/shipExplode.xnb","SoundEffectProcessor","SoundEffectContent",182206,182121,0,3362291
+"C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/UIFont.spritefont","C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bin/DesktopGL/UIFont.xnb","FontDescriptionProcessor","SpriteFontContent",2015,70690,0,0402797
