@@ -8,7 +8,7 @@ namespace Shmup
 {
     class MissileSprite : Sprite
     {
-        float currentSpeed = 10f;
+        float currentSpeed = 100f;
         float maxSpeed = 1000;
         float acceleration = 500f;
         public bool dead = false;

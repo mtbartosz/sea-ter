@@ -6,14 +6,30 @@
   <SourceFiles>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/background.png</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bigfont.spritefont</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/bubble.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/chardead.wav</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/cutefish.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/fishdead.wav</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/missile.png</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/missileExplode.wav</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/particle.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/piranha.png</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/saucer.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/seabackground.png</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/shark.png</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/shipExplode.wav</File>
     <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/UIFont.spritefont</File>
+    <File>C:/Users/mtbar/Desktop/College/C#/Shmup/Shmup/Content/waterloop.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

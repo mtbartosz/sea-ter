@@ -13,7 +13,7 @@ namespace Shmup
         Vector2 velocity;
         float maxLife;
         public float currentLife;
-        Color particlecolor;
+
         public ParticleSprite(Texture2D newTxr, Vector2 newPos) : base(newTxr, newPos)
         {
             maxLife = (float)(rando.NextDouble() / 2 + 0.5);
@@ -26,20 +26,12 @@ namespace Shmup
             if (rando.Next(2) > 0) velocity.Y *= -1;
 
 
-            particlecolor = new Color((float)(
-                rando.NextDouble() / 2 + 0.5),
-                0.25f,
-                (float)(rando.NextDouble() / 2 + 0.1)
-                );
-
-
-
-
         }
 
         public override void Update(GameTime gameTime, Point screenSize)
         {
-
+            velocity.Y -= 1f;
+            velocity.X *= 0.75f;
             spritePos += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             currentLife -= (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
@@ -51,15 +43,17 @@ namespace Shmup
                 new Rectangle(
 
                  (int)spritePos.X,
-
                  (int)spritePos.Y,
                  (int)(spriteTexture.Width * (currentLife / maxLife) * 2),
-                 (int)(spriteTexture.Height * (currentLife / maxLife) * 2
-                 )),
-            particlecolor
-
-
+                 (int)(spriteTexture.Height * (currentLife / maxLife) * 2)
+                 ),
+                Color.LightBlue
                 );
+               
+           
+
+
+                
         }
     }
 }

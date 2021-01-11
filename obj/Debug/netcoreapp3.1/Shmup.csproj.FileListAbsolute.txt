@@ -55,3 +55,11 @@ C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\pa
 C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\bigfont.xnb
 C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\missileExplode.xnb
 C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\shipExplode.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\seabackground.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\piranha.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\bubble.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\fishdead.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\chardead.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\cutefish.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\waterloop.xnb
+C:\Users\mtbar\Desktop\College\C#\Shmup\Shmup\bin\Debug\netcoreapp3.1\Content\shark.xnb

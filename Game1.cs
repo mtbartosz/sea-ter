@@ -10,13 +10,13 @@ using System.Diagnostics;
 
 namespace Shmup
 {
-	public class Game1 : Game
+	public class Game1 : Game                                                 //defining main class and naming all assets used ingame
 	{
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
-		Texture2D saucerTxr, missileTxr, backgroundTxr, particleTxr;
-		Point screenSize = new Point(800, 450);
+		Texture2D piranhaTxr, fishTxr, backgroundTxr, particleTxr, bigfishTxr;
+		Point screenSize = new Point(1920, 1080);
 		float spawnCooldown = 2;
 		float playTime = 0;
 		
@@ -25,17 +25,17 @@ namespace Shmup
 		List<MissileSprite> missileList = new List<MissileSprite>();
 		List<ParticleSprite> particleList = new List<ParticleSprite>();
 		SpriteFont uiFont, bigfont;
-		SoundEffect shipExplodeSnd, missileExplodeSnd;
+		SoundEffect chardeadSnd, fishdeadSnd, backgroundSnd;
 
 
 		public Game1()
 		{
-			_graphics = new GraphicsDeviceManager(this);
+			_graphics = new GraphicsDeviceManager(this);                        // defining path to content folder         
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
 		}
 
-		protected override void Initialize()
+		protected override void Initialize()                                   // initializing game component	
 		{
 			_graphics.PreferredBackBufferWidth = screenSize.X;
 			_graphics.PreferredBackBufferHeight = screenSize.Y;
@@ -44,41 +44,48 @@ namespace Shmup
 			base.Initialize();
 		}
 
-		protected override void LoadContent()
+		protected override void LoadContent()                                   // loading content - fonts textures and sounds
 		{
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
-			saucerTxr = Content.Load<Texture2D>("saucer");
-			missileTxr = Content.Load<Texture2D>("missile");
-			backgroundTxr = Content.Load<Texture2D>("background");
-			particleTxr = Content.Load<Texture2D>("particle");
+			piranhaTxr = Content.Load<Texture2D>("piranha");
+			fishTxr = Content.Load<Texture2D>("cutefish");
+			backgroundTxr = Content.Load<Texture2D>("seabackground");
+			particleTxr = Content.Load<Texture2D>("bubble");
 			uiFont = Content.Load<SpriteFont>("UIFont");
 			bigfont = Content.Load<SpriteFont>("bigfont");
-			shipExplodeSnd = Content.Load<SoundEffect>("shipExplode");
-			missileExplodeSnd = Content.Load<SoundEffect>("missileExplode");	
+			chardeadSnd = Content.Load<SoundEffect>("chardead");
+			fishdeadSnd = Content.Load<SoundEffect>("fishdead");
+			backgroundSnd = Content.Load<SoundEffect>("waterloop");
+			bigfishTxr = Content.Load<Texture2D>("shark");
 
 
 
 			backgroundSprite = new Sprite(backgroundTxr, new Vector2());
-			playerSprite = new PlayerSprite(saucerTxr, new Vector2(screenSize.X/6, screenSize.Y/2));
+			playerSprite = new PlayerSprite(piranhaTxr, new Vector2(screenSize.X/6, screenSize.Y/2));     //defining position of background and player sprite
 			
+			var instance = backgroundSnd.CreateInstance();                                                // playing background sound in loop
+			instance.IsLooped = true;
+			instance.Play();
+
+
 		}
 
 		protected override void Update(GameTime gameTime)
 		{
 			Random rng = new Random();
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))  // determining what key escapes game
 				Exit();
 			if (spawnCooldown > 0)
 			{
 				spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			}
-			else if (playerSprite.playerLives > 0 && missileList.Count < (Math.Min(playTime, 120f) / 120f) * 8 + 2)
+			else if (playerSprite.playerLives > 0 && missileList.Count < Math.Max(1, (60 - playTime) / 12))
 
 			{
 				missileList.Add(new MissileSprite(
-					missileTxr,
-					new Vector2(screenSize.X, rng.Next(0, screenSize.Y - missileTxr.Height)),
+					fishTxr,
+					new Vector2(screenSize.X, rng.Next(0, screenSize.Y - fishTxr.Height)),
 				     (Math.Min(playTime, 120f)/ 120f) * 20000f + 200f
 					));
 				    spawnCooldown = (float)(rng.NextDouble() + 0.5);
@@ -108,18 +115,18 @@ namespace Shmup
 										)
 										)); 
 					missile.dead = true;
-					playerSprite.playerLives--;
-					missileExplodeSnd.Play();
+					playerSprite.playerLives++;
+					fishdeadSnd.Play();
 					if(playerSprite.playerLives <= 0)
                     {
 						for (int i = 0; i < 16; i++)
 							particleList.Add(new ParticleSprite(particleTxr,
 								new Vector2(
-											playerSprite.spritePos.X + (saucerTxr.Width / 2) - (particleTxr.Width / 2),
-											playerSprite.spritePos.Y + (saucerTxr.Height / 2) - (particleTxr.Height / 2)
+											playerSprite.spritePos.X + (piranhaTxr.Width / 2) - (particleTxr.Width / 2),
+											playerSprite.spritePos.Y + (piranhaTxr.Height / 2) - (particleTxr.Height / 2)
 											)
 											));
-						shipExplodeSnd.Play();
+						chardeadSnd.Play();
 
 					}
 
@@ -136,6 +143,7 @@ namespace Shmup
 
 			missileList.RemoveAll(missile => missile.dead);
 			particleList.RemoveAll(particle => particle.currentLife <= 0);
+			
 
 
 
@@ -143,6 +151,9 @@ namespace Shmup
 
 			Debug.WriteLine(missileList.Count);
 		}
+
+
+
 
 		protected override void Draw(GameTime gameTime)
 		{
