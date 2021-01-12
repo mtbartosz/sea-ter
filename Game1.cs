@@ -80,7 +80,7 @@ namespace Shmup
 				spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			}
-			else if (playerSprite.playerLives > 0 && missileList.Count < Math.Max(1, (60 - playTime) / 12))
+			else if (playerSprite.playerLives > 0 && missileList.Count < Math.Max(1, (60 - playTime) / 12))    // defining amount of edible fish on-screen at a time
 
 			{
 				missileList.Add(new MissileSprite(
@@ -115,7 +115,7 @@ namespace Shmup
 										)
 										)); 
 					missile.dead = true;
-					playerSprite.playerLives++;
+					playerSprite.playerLives--;
 					fishdeadSnd.Play();
 					if(playerSprite.playerLives <= 0)
                     {
