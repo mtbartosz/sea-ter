@@ -6,14 +6,13 @@ using System;
 
 namespace Shmup
 {
-
-    class BigFish : Sprite
+    class FishSprite : Sprite
     {
         float currentSpeed = 100f;
         float maxSpeed = 1000;
         float acceleration = 500f;
         public bool dead = false;
-        public BigFish(Texture2D newTxr, Vector2 newPos, float newMaxSpeed = 1000f) : base(newTxr, newPos)
+        public FishSprite(Texture2D newTxr, Vector2 newPos, float newMaxSpeed = 1000f) : base(newTxr, newPos)
         {
             maxSpeed = newMaxSpeed;
 
@@ -29,6 +28,4 @@ namespace Shmup
         }
     }
 
-
-}    
-
+}

@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace Shmup
 {
-	public class Game1 : Game                                                 //defining main class and naming all assets used ingame
+	public class Game1 : Game                                                 //defining main class and naming all assets used in game
 	{
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
@@ -22,7 +22,8 @@ namespace Shmup
 		
 		Sprite backgroundSprite;
 		PlayerSprite playerSprite;
-		List<MissileSprite> missileList = new List<MissileSprite>();
+		List<FishSprite> fishList = new List<FishSprite>();
+		List<FishSprite> bigFishList = new List<FishSprite>();
 		List<ParticleSprite> particleList = new List<ParticleSprite>();
 		SpriteFont uiFont, bigfont;
 		SoundEffect chardeadSnd, fishdeadSnd, backgroundSnd;
@@ -80,15 +81,26 @@ namespace Shmup
 				spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			}
-			else if (playerSprite.playerLives > 0 && missileList.Count < Math.Max(1, (60 - playTime) / 12))    // defining amount of edible fish on-screen at a time
-
+			else if (playerSprite.playerLives > 0)     // defining amount of edible fish on-screen at a time
 			{
-				missileList.Add(new MissileSprite(
-					fishTxr,
-					new Vector2(screenSize.X, rng.Next(0, screenSize.Y - fishTxr.Height)),
-				     (Math.Min(playTime, 120f)/ 120f) * 20000f + 200f
-					));
-				    spawnCooldown = (float)(rng.NextDouble() + 0.5);
+				if (fishList.Count < Math.Max(1, (60 - playTime) / 12))
+				{
+					fishList.Add(new FishSprite(
+						fishTxr,
+						new Vector2(screenSize.X, rng.Next(0, screenSize.Y - fishTxr.Height)),
+						 (Math.Min(playTime, 120f) / 120f) * 20000f + 200f
+						));
+				}
+
+				if (bigFishList.Count == 0)
+				{
+					bigFishList.Add(new FishSprite(
+						bigfishTxr,
+						new Vector2(screenSize.X, rng.Next(0, screenSize.Y - bigfishTxr.Height)),      // defining random spawn of fish on y axis
+						 (Math.Min(playTime, 120f) / 120f) * 20000f + 200f                             // defining speed of spawned fish depending on a play time
+						));
+				}
+				spawnCooldown = (float)(rng.NextDouble() + 0.5);
 
 			}
 
@@ -98,13 +110,9 @@ namespace Shmup
 				playTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 			}
 
-			foreach (MissileSprite missile in missileList)
-			
+			foreach (FishSprite missile in fishList)
             {
 				missile.Update(gameTime, screenSize);
-
-
-
                 if (playerSprite.playerLives > 0 && playerSprite.IsColliding(missile))
                 {
 					for (int i = 0; i < 16; i++)
@@ -115,10 +123,28 @@ namespace Shmup
 										)
 										)); 
 					missile.dead = true;
-					playerSprite.playerLives--;
+					playerSprite.playerLives++;
 					fishdeadSnd.Play();
-					if(playerSprite.playerLives <= 0)
-                    {
+                }
+            }
+
+			foreach (FishSprite missile in bigFishList)
+			{
+				missile.Update(gameTime, screenSize);
+				if (playerSprite.playerLives > 0 && playerSprite.IsColliding(missile))
+				{
+					for (int i = 0; i < 16; i++)
+						particleList.Add(new ParticleSprite(particleTxr,
+							new Vector2(
+										missile.spritePos.X + (missile.spriteTexture.Width / 2) - (particleTxr.Width / 2),
+										missile.spritePos.Y + (missile.spriteTexture.Height / 2) - (particleTxr.Height / 2)
+										)
+										));
+					missile.dead = true;
+					playerSprite.playerLives-=5;
+					fishdeadSnd.Play();
+					if (playerSprite.playerLives <= 0)
+					{
 						for (int i = 0; i < 16; i++)
 							particleList.Add(new ParticleSprite(particleTxr,
 								new Vector2(
@@ -130,18 +156,13 @@ namespace Shmup
 
 					}
 
-                }
-
-
-
-
-            }
+				}
+			}
 
 			foreach (ParticleSprite particle in particleList) particle.Update(gameTime, screenSize);
 		
-			
-
-			missileList.RemoveAll(missile => missile.dead);
+			fishList.RemoveAll(missile => missile.dead);
+			bigFishList.RemoveAll(missile => missile.dead);
 			particleList.RemoveAll(particle => particle.currentLife <= 0);
 			
 
@@ -149,7 +170,8 @@ namespace Shmup
 
 			base.Update(gameTime);
 
-			Debug.WriteLine(missileList.Count);
+			Debug.WriteLine(fishList.Count);
+			
 		}
 
 
@@ -164,7 +186,8 @@ namespace Shmup
 			backgroundSprite.Draw(_spriteBatch);
 			if(playerSprite.playerLives > 0) playerSprite.Draw(_spriteBatch);
 
-            foreach (MissileSprite missile in missileList) missile.Draw(_spriteBatch);
+            foreach (FishSprite missile in fishList) missile.Draw(_spriteBatch);
+			foreach (FishSprite missile in bigFishList) missile.Draw(_spriteBatch);
 			foreach (ParticleSprite particle in particleList) particle.Draw(_spriteBatch);
 
 			_spriteBatch.DrawString(
