@@ -26,7 +26,7 @@ namespace Shmup
 		List<FishSprite> bigFishList = new List<FishSprite>();
 		List<ParticleSprite> particleList = new List<ParticleSprite>();
 		SpriteFont uiFont, bigfont;
-		SoundEffect chardeadSnd, fishdeadSnd, backgroundSnd;
+		SoundEffect chardeadSnd, fishdeadSnd, backgroundSnd, sharkSnd;
 
 
 		public Game1()
@@ -54,6 +54,7 @@ namespace Shmup
 			particleTxr = Content.Load<Texture2D>("bubble");
 			uiFont = Content.Load<SpriteFont>("UIFont");
 			bigfont = Content.Load<SpriteFont>("bigfont");
+			sharkSnd = Content.Load<SoundEffect>("sharkattack");
 			chardeadSnd = Content.Load<SoundEffect>("chardead");
 			fishdeadSnd = Content.Load<SoundEffect>("fishdead");
 			backgroundSnd = Content.Load<SoundEffect>("waterloop");
@@ -75,7 +76,7 @@ namespace Shmup
 		{
 			Random rng = new Random();
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))  // determining what key escapes game
-				Exit();
+				Exit(); 
 			if (spawnCooldown > 0)
 			{
 				spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -134,15 +135,18 @@ namespace Shmup
 				if (playerSprite.playerLives > 0 && playerSprite.IsColliding(missile))
 				{
 					for (int i = 0; i < 16; i++)
+					{
 						particleList.Add(new ParticleSprite(particleTxr,
-							new Vector2(
-										missile.spritePos.X + (missile.spriteTexture.Width / 2) - (particleTxr.Width / 2),
-										missile.spritePos.Y + (missile.spriteTexture.Height / 2) - (particleTxr.Height / 2)
-										)
-										));
+							  new Vector2(
+										 playerSprite.spritePos.X + (piranhaTxr.Width / 2) - (particleTxr.Width / 2),
+										playerSprite.spritePos.Y + (piranhaTxr.Height / 2) - (particleTxr.Height / 2)
+										  )
+										  ));
+						particleList[particleList.Count - 1]._particolor = Color.Red;
+					} 
 					missile.dead = true;
 					playerSprite.playerLives-=5;
-					fishdeadSnd.Play();
+					sharkSnd.Play();
 					if (playerSprite.playerLives <= 0)
 					{
 						for (int i = 0; i < 16; i++)
@@ -152,11 +156,16 @@ namespace Shmup
 											playerSprite.spritePos.Y + (piranhaTxr.Height / 2) - (particleTxr.Height / 2)
 											)
 											));
-						chardeadSnd.Play();
+						
 
 					}
+					if(playerSprite.playerLives <= 0)
+                    {
+						chardeadSnd.Play();
+                    }
 
 				}
+				
 			}
 
 			foreach (ParticleSprite particle in particleList) particle.Update(gameTime, screenSize);
@@ -190,7 +199,7 @@ namespace Shmup
 			foreach (FishSprite missile in bigFishList) missile.Draw(_spriteBatch);
 			foreach (ParticleSprite particle in particleList) particle.Draw(_spriteBatch);
 
-			_spriteBatch.DrawString(
+			_spriteBatch.DrawString(                             //
 				uiFont,
 				"Lives : " + playerSprite.playerLives, 
 				new Vector2(14, 14),
@@ -217,16 +226,23 @@ namespace Shmup
 
 
 			if (playerSprite.playerLives <= 0)
-            {    
-				Vector2 textSize = bigfont.MeasureString("GAME OVER");
+            {
+				Vector2 textSize = bigfont.MeasureString("    GAME OVER    ");
 				
 				_spriteBatch.DrawString
 					(bigfont,
-					"GAME OVER",
-					new Vector2((screenSize.X / 2) - (textSize.X / 2), (screenSize.Y / 2) - (textSize.Y / 2)),
+					" GAME OVER ",
+					new Vector2((screenSize.X / 2) - (textSize.X / 2), (screenSize.Y / 3) - (textSize.Y / 3)),
 					Color.White
 					);
-            }
+				_spriteBatch.DrawString
+					(bigfont,
+					"YOUR SCORE IS :" + Math.Round(playTime),
+					new Vector2((screenSize.X / 2) - (textSize.X / 5), (screenSize.Y / 2) - (textSize.Y / 5)),
+					Color.White
+					);
+			}
+			
 
 			_spriteBatch.End();
 

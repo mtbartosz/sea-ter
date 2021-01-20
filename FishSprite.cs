@@ -8,16 +8,13 @@ namespace Shmup
 {
     class FishSprite : Sprite
     {
-        float currentSpeed = 100f;
+        float currentSpeed = 120f;
         float maxSpeed = 1000;
         float acceleration = 500f;
         public bool dead = false;
         public FishSprite(Texture2D newTxr, Vector2 newPos, float newMaxSpeed = 1000f) : base(newTxr, newPos)
         {
             maxSpeed = newMaxSpeed;
-
-
-
         }
         public override void Update(GameTime gameTime, Point screenSize)
         {

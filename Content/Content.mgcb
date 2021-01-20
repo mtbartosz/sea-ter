@@ -146,6 +146,12 @@
 /processorParam:TextureFormat=Color
 /build:shark.png
 
+#begin sharkattack.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sharkattack.wav
+
 #begin shipExplode.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
