@@ -6,7 +6,7 @@ namespace Shmup
 {
     class FishSprite : Sprite
     {
-        float currentSpeed = 120f;
+        float currentSpeed = 120f;                         // defining parameters about speed and acceleration of a small edible fish
         float maxSpeed = 1000;
         float acceleration = 500f;
         public bool dead = false;

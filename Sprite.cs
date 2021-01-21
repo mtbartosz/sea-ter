@@ -5,7 +5,7 @@ namespace Shmup
 {
 	public class Sprite
 	{
-		public Texture2D spriteTexture;
+		public Texture2D spriteTexture;                                 // defining sprites as rectangles that collide 
 		public Vector2 spritePos;
 
 		public Sprite(Texture2D newTxr, Vector2 newPos)
@@ -42,8 +42,6 @@ namespace Shmup
 				);
 			
 			return thisRect.Intersects(otherRect);
-
-
 		}
 	}
 }

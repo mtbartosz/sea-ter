@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Shmup
 {
-	class PlayerSprite : Sprite
+	class PlayerSprite : Sprite                                              // specifying parameters for a player sprite (piranha)
 	{
 		float moveSpeed = 250;
 		public int playerLives = 3;
@@ -14,7 +14,7 @@ namespace Shmup
 
 		}
 
-		public override void Update(GameTime gameTime, Point screenSize)
+		public override void Update(GameTime gameTime, Point screenSize)             // specifying keys used for movement of a player sprite 
 		{
 			KeyboardState _keyboardState = Keyboard.GetState();
 

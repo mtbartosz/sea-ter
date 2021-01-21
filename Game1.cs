@@ -82,9 +82,9 @@ namespace Shmup
 				spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			}
-			else if (playerSprite.playerLives > 0)     // defining amount of edible fish on-screen at a time
+			else if (playerSprite.playerLives > 0)    
 			{
-				if (fishList.Count < Math.Max(1, (60 - playTime) / 12))
+				if (fishList.Count < Math.Max(1, (60 - playTime) / 12))   // defining amount of edible fish on-screen at a time
 				{
 					fishList.Add(new FishSprite(
 						fishTxr,
@@ -111,28 +111,28 @@ namespace Shmup
 				playTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 			}
 
-			foreach (FishSprite missile in fishList)
+			foreach (FishSprite fish in fishList)                   // defining what happens when colliding  with small edible fish
             {
-				missile.Update(gameTime, screenSize);
-                if (playerSprite.playerLives > 0 && playerSprite.IsColliding(missile))
+				fish.Update(gameTime, screenSize);
+                if (playerSprite.playerLives > 0 && playerSprite.IsColliding(fish))
                 {
 					for (int i = 0; i < 16; i++)
 						particleList.Add(new ParticleSprite(particleTxr,
 							new Vector2(
-										missile.spritePos.X + (missile.spriteTexture.Width / 2) - (particleTxr.Width / 2),
-										missile.spritePos.Y + (missile.spriteTexture.Height / 2) - (particleTxr.Height / 2)
+										fish.spritePos.X + (fish.spriteTexture.Width / 2) - (particleTxr.Width / 2),
+										fish.spritePos.Y + (fish.spriteTexture.Height / 2) - (particleTxr.Height / 2)
 										)
 										)); 
-					missile.dead = true;
+					fish.dead = true;
 					playerSprite.playerLives++;
 					fishdeadSnd.Play();
                 }
             }
 
-			foreach (FishSprite missile in bigFishList)
+			foreach (FishSprite fish in bigFishList)                // defining what happens when colliding with shark
 			{
-				missile.Update(gameTime, screenSize);
-				if (playerSprite.playerLives > 0 && playerSprite.IsColliding(missile))
+				fish.Update(gameTime, screenSize);
+				if (playerSprite.playerLives > 0 && playerSprite.IsColliding(fish))
 				{
 					for (int i = 0; i < 16; i++)
 					{
@@ -144,7 +144,7 @@ namespace Shmup
 										  ));
 						particleList[particleList.Count - 1]._particolor = Color.Red;
 					} 
-					missile.dead = true;
+					fish.dead = true;
 					playerSprite.playerLives-=5;
 					sharkSnd.Play();
 					if (playerSprite.playerLives <= 0)
@@ -156,8 +156,6 @@ namespace Shmup
 											playerSprite.spritePos.Y + (piranhaTxr.Height / 2) - (particleTxr.Height / 2)
 											)
 											));
-						
-
 					}
 					if(playerSprite.playerLives <= 0)
                     {
@@ -170,13 +168,10 @@ namespace Shmup
 
 			foreach (ParticleSprite particle in particleList) particle.Update(gameTime, screenSize);
 		
-			fishList.RemoveAll(missile => missile.dead);
-			bigFishList.RemoveAll(missile => missile.dead);
+			fishList.RemoveAll(fish => fish.dead);                             // removing sprites from screen when they are dead after collision
+			bigFishList.RemoveAll(fish => fish.dead);
 			particleList.RemoveAll(particle => particle.currentLife <= 0);
 			
-
-
-
 			base.Update(gameTime);
 
 			Debug.WriteLine(fishList.Count);
@@ -195,17 +190,17 @@ namespace Shmup
 			backgroundSprite.Draw(_spriteBatch);
 			if(playerSprite.playerLives > 0) playerSprite.Draw(_spriteBatch);
 
-            foreach (FishSprite missile in fishList) missile.Draw(_spriteBatch);
-			foreach (FishSprite missile in bigFishList) missile.Draw(_spriteBatch);
+            foreach (FishSprite fish in fishList) fish.Draw(_spriteBatch);
+			foreach (FishSprite fish in bigFishList) fish.Draw(_spriteBatch);
 			foreach (ParticleSprite particle in particleList) particle.Draw(_spriteBatch);
 
-			_spriteBatch.DrawString(                             //
+			_spriteBatch.DrawString(                             // writing basic information about state of the player's lives and gameplay time - which is also score
 				uiFont,
 				"Lives : " + playerSprite.playerLives, 
 				new Vector2(14, 14),
 				Color.Black
 				);
-			_spriteBatch.DrawString(
+			_spriteBatch.DrawString(                              // writing same thing again in different position with different colour to make it more distinctive
 				uiFont,
 				"Lives : " + playerSprite.playerLives,
 				new Vector2(10, 10),
@@ -225,7 +220,7 @@ namespace Shmup
 				);
 
 
-			if (playerSprite.playerLives <= 0)
+			if (playerSprite.playerLives <= 0)                         // displaying text at the end of the game 
             {
 				Vector2 textSize = bigfont.MeasureString(" GAME OVER");
 				

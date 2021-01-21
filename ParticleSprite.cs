@@ -7,7 +7,7 @@ namespace Shmup
     class ParticleSprite : Sprite
     {
 
-        Random rando = new Random();
+        Random rando = new Random();                                            // defining characteristics of particles that occur when sprites are colliding
         Vector2 velocity;
         float maxLife;
         public float currentLife;
@@ -25,7 +25,7 @@ namespace Shmup
             if (rando.Next(2) > 0) velocity.Y *= -1;
         }
 
-        public override void Update(GameTime gameTime, Point screenSize)
+        public override void Update(GameTime gameTime, Point screenSize)    
         {
             velocity.Y -= 1f;
             velocity.X *= 0.99f;
