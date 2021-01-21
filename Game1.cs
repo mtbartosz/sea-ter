@@ -227,19 +227,25 @@ namespace Shmup
 
 			if (playerSprite.playerLives <= 0)
             {
-				Vector2 textSize = bigfont.MeasureString("    GAME OVER    ");
+				Vector2 textSize = bigfont.MeasureString("GAME OVER");
 				
 				_spriteBatch.DrawString
 					(bigfont,
-					" GAME OVER ",
+					"GAME OVER",
 					new Vector2((screenSize.X / 2) - (textSize.X / 2), (screenSize.Y / 3) - (textSize.Y / 3)),
 					Color.White
 					);
 				_spriteBatch.DrawString
 					(bigfont,
-					"YOUR SCORE IS :" + Math.Round(playTime),
-					new Vector2((screenSize.X / 2) - (textSize.X / 5), (screenSize.Y / 2) - (textSize.Y / 5)),
+					"YOUR SCORE:",
+					new Vector2((screenSize.X / 2) - (textSize.X / 2), (screenSize.Y / 2) - (textSize.Y / 2)),
 					Color.White
+					);
+				_spriteBatch.DrawString
+					(bigfont,
+					" " + Math.Round(playTime),
+					new Vector2(900, 600),
+					Color.Red
 					);
 			}
 			
