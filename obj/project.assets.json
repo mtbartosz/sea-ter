@@ -179,9 +179,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\Shmup.csproj",
-      "projectName": "Shmup",
-      "projectPath": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\Shmup.csproj",
+      "projectUniqueName": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\sea-ter.csproj",
+      "projectName": "sea-ter",
+      "projectPath": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\sea-ter.csproj",
       "packagesPath": "C:\\Users\\mtbar\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\obj\\",
       "projectStyle": "PackageReference",

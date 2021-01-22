@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5Xxqo04hkMZnsZldd7u519lXC3efjAV056tJIZ8h5W06vh25mr+5rjso335rT7ZWPpYXBlnFqfr5/ShvrmUvGQ==",
+  "dgSpecHash": "MeEi9R+UDVinwGjmJH24i6d70p0Poq4xSyYGvr+Y4g5XvRzTVw4aWpI6trBnQcrKC6FR0uTiW66iTsvU+EbSpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\Shmup.csproj",
+  "projectFilePath": "C:\\Users\\mtbar\\Desktop\\College\\C#\\Shmup\\Shmup\\sea-ter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mtbar\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
     "C:\\Users\\mtbar\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
